@@ -7,14 +7,12 @@ The EA trades gold (XAUUSD) using a multi-timeframe breakout and retest strategy
 
 ## Features
 
-- H4 → M5 breakout and retest logic  
+- H4 → M5 breakout and retest trading logic  
 - Configurable fixed lot or risk-based position sizing  
 - Trailing stop management  
-- Optional high-impact news filter  
-- Spread and terminal safety checks before trade execution  
+- **Smart news filter** that avoids trading around high-impact events  
+- Spread and terminal safety checks  
 - Dynamic lot calculation based on risk percentage  
-
----
 
 ## Strategy Overview
 
@@ -25,7 +23,7 @@ The EA trades gold (XAUUSD) using a multi-timeframe breakout and retest strategy
    On each new M5 candle:  
    - A bullish breakout occurs when the candle closes above `zoneHigh`.  
    - A bearish breakout occurs when the candle closes below `zoneLow`.  
-   When a breakout occurs, the EA waits for a retest.
+   When a breakout occurs, the EA starts waiting for a retest.
 
 3. **Retest entry**  
    - If price returns to the broken zone within a specified window (`MaxWaitSeconds`):  
@@ -33,12 +31,12 @@ The EA trades gold (XAUUSD) using a multi-timeframe breakout and retest strategy
      - **Sell** on bearish retest → SL = breakout candle high, TP = 1.5 × risk distance.  
    - Uses either a fixed lot (`Lots`) or a risk-based lot (`UseRiskPercent`, `RiskPercent`).
 
-4. **Trade management**  
-   - Optional trailing stop (`UseTrailingStop`, `TrailingStart`, `TrailingStep`).  
+4. **Trade management and protection**  
+   - Trailing stop control (`UseTrailingStop`, `TrailingStart`, `TrailingStep`).  
    - Spread and trade-permission checks (`MaxSpreadPoints`, `TERMINAL_TRADE_ALLOWED`).  
-   - Optional news filter to skip trading before or after major events.
+   - **Built-in news filter**: the EA checks the MetaTrader 5 economic calendar (`CalendarValueHistory`) and automatically avoids opening new trades within the defined window around **high-impact news events** for a selected currency (`NewsFilterCurrency`, `NewsFilterMinutes`).  
+   - This filter helps prevent entries during volatile periods and improves stability during major market announcements.
 
----
 
 ## Input Parameters
 
@@ -83,6 +81,8 @@ The EA trades gold (XAUUSD) using a multi-timeframe breakout and retest strategy
 **Model:** Every tick (MetaTrader 5 Strategy Tester)
 
 <img width="987" height="384" alt="image" src="https://github.com/user-attachments/assets/f3ed384a-65d7-4a4b-b851-921dcd3191f6" />
+<img width="967" height="372" alt="image" src="https://github.com/user-attachments/assets/d69a254e-9c1a-4636-b7c1-6c1996cba90e" />
+<img width="990" height="420" alt="image" src="https://github.com/user-attachments/assets/7ff42558-7bb9-4f50-a4ab-5faf8980e816" />
 
 
 This backtest covers almost three years of market data, including different volatility phases in gold.  
