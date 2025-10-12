@@ -74,7 +74,7 @@ The EA trades gold (XAUUSD) using a multi-timeframe breakout and retest strategy
 6. Adjust input parameters as needed  
 
 ---
-
+## Backtest
 **Symbol:** XAUUSD  
 **Timeframe:** M5  
 **Period:** Jan 2022 – Oct 2025  
