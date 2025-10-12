@@ -82,7 +82,8 @@ The EA trades gold (XAUUSD) using a multi-timeframe breakout and retest strategy
 
 <img width="987" height="384" alt="image" src="https://github.com/user-attachments/assets/f3ed384a-65d7-4a4b-b851-921dcd3191f6" />
 <img width="967" height="372" alt="image" src="https://github.com/user-attachments/assets/d69a254e-9c1a-4636-b7c1-6c1996cba90e" />
-<img width="990" height="420" alt="image" src="https://github.com/user-attachments/assets/7ff42558-7bb9-4f50-a4ab-5faf8980e816" />
+<img width="1023" height="547" alt="image" src="https://github.com/user-attachments/assets/eb485143-f264-4e0f-8300-f045a4ad12e3" />
+
 
 
 This backtest covers almost three years of market data, including different volatility phases in gold.  
@@ -96,5 +97,5 @@ The EA demonstrates consistent trade execution, controlled drawdown, and stable 
 - Results are for research and educational purposes only and do not guarantee future performance.
 
 
-## Project Structure
+
 
