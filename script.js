@@ -4,6 +4,8 @@ const auth = document.querySelector("#auth");
 const onboarding = document.querySelector("#onboarding");
 const appShell = document.querySelector("#app");
 const storyDetail = document.querySelector("#story-detail");
+const storiesHeading = document.querySelector(".stories-heading");
+const storiesRow = document.querySelector(".stories-row");
 const authForm = document.querySelector("#auth-form");
 const authStatus = document.querySelector("#auth-status");
 const authSwitch = document.querySelector("#auth-switch");
@@ -157,6 +159,10 @@ function showView(view, direction = "next") {
   void shell.offsetWidth;
   shell.classList.add(direction === "prev" ? "view-slide-prev" : "view-slide-next");
   activeView = view;
+  const showStories = view === "home";
+  storiesHeading.hidden = !showStories;
+  storiesRow.hidden = !showStories;
+  storyDetail.hidden = true;
   document.querySelectorAll(".app-tabs button").forEach((item) => item.classList.toggle("active", item.dataset.view === view));
   document.querySelectorAll(".app-view").forEach((panel) => { panel.hidden = panel.dataset.panel !== view; });
 }
