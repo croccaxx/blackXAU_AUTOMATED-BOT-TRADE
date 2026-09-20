@@ -198,6 +198,10 @@ appShell.addEventListener("touchend", (event) => {
   if (Math.abs(deltaX) < 55 || Math.abs(deltaX) < Math.abs(deltaY)) return;
   const currentIndex = appViews.indexOf(activeView);
   const nextIndex = deltaX < 0 ? Math.min(currentIndex + 1, appViews.length - 1) : Math.max(currentIndex - 1, 0);
+  if (activeView === "messages" && document.querySelector("#chat-panel").hidden === false && deltaX > 0) {
+    closeChat();
+    return;
+  }
   if (nextIndex !== currentIndex) showView(appViews[nextIndex], deltaX < 0 ? "next" : "prev");
 }, { passive: true });
 
@@ -256,14 +260,20 @@ document.querySelector("#begin-chat").addEventListener("click", () => {
 document.querySelector("#message-list").addEventListener("click", (event) => {
   const thread = event.target.closest(".message-thread");
   if (!thread || !activeChat) return;
-  document.querySelector("#message-list").hidden = true;
-  document.querySelector("#chat-panel").hidden = false;
+  openChat();
 });
 
-document.querySelector("#close-chat").addEventListener("click", () => {
+function openChat() {
+  document.querySelector("#message-list").hidden = true;
+  document.querySelector("#chat-panel").hidden = false;
+}
+
+function closeChat() {
   document.querySelector("#chat-panel").hidden = true;
   document.querySelector("#message-list").hidden = false;
-});
+}
+
+document.querySelector("#close-chat").addEventListener("click", closeChat);
 
 document.querySelector("#chat-camera").addEventListener("click", () => {
   const input = document.createElement("input");
