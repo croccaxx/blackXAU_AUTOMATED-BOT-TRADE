@@ -182,3 +182,50 @@ h1 span { letter-spacing: -.105em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Product-led social preview */
+.hero { background: #faf9f7; min-height: 820px; padding-top: 12rem; }
+.hero::before { background: radial-gradient(circle, rgba(225, 87, 61, .12), transparent 65%); content: ""; height: 620px; position: absolute; right: 3%; top: 90px; width: 620px; }
+.hero-copy { max-width: 510px; }
+.hero-copy h1 { font-size: clamp(3.7rem, 7vw, 6.8rem); letter-spacing: -.1em; line-height: .84; }
+.hero-copy h1 em { color: var(--orange-dark); }
+.hero-intro { max-width: 365px; }
+.app-preview { background: #fff; border: 1px solid rgba(23,23,25,.12); border-radius: 22px; box-shadow: 0 28px 70px rgba(23,23,25,.15); padding: 1rem; position: absolute; right: max(4rem, calc((100vw - 1120px) / 2)); top: 8rem; transform: rotate(3deg); width: 315px; z-index: 2; }
+.app-topbar, .app-tabs, .app-actions, .profile-info { align-items: center; display: flex; justify-content: space-between; }
+.app-logo { font-size: .88rem; font-weight: 800; letter-spacing: -.04em; }
+.app-logo span { color: var(--orange); }
+.app-icon { font-size: 1.25rem; }
+.app-tabs { border-bottom: 1px solid #ece9e4; color: #aaa6a2; font-size: .55rem; gap: 1rem; justify-content: flex-start; margin-top: 1rem; padding-bottom: .8rem; }
+.app-tabs b { color: var(--ink); border-bottom: 2px solid var(--orange); padding-bottom: .8rem; }
+.profile-preview { margin-top: .8rem; }
+.profile-photo { background: linear-gradient(145deg, #d5a47b, #9d5b52 48%, #293c40 49%, #678f83); border-radius: 12px; height: 300px; overflow: hidden; position: relative; }
+.profile-photo::after { background: linear-gradient(20deg, rgba(0,0,0,.5), transparent 55%); content: ""; inset: 0; position: absolute; }
+.online-dot { background: #72c879; border: 2px solid white; border-radius: 50%; height: 10px; left: .8rem; position: absolute; top: .8rem; width: 10px; z-index: 1; }
+.photo-location { bottom: .8rem; color: white; font-family: var(--mono); font-size: .52rem; left: .8rem; position: absolute; z-index: 1; }
+.profile-info { align-items: start; margin-top: .8rem; }
+.profile-info h2 { font-size: 1.25rem; letter-spacing: -.06em; margin-bottom: .25rem; }
+.profile-info p { color: #76716e; font-size: .62rem; line-height: 1.4; margin: 0; }
+.verified { background: var(--orange); border-radius: 50%; color: white; font-size: .6rem; height: 17px; padding: .1rem; text-align: center; width: 17px; }
+.profile-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .75rem; }
+.profile-tags span { background: #f0ede8; border-radius: 20px; color: #6f6a66; font-size: .53rem; padding: .35rem .55rem; }
+.app-actions { justify-content: center; gap: .8rem; margin: 1rem 0 .6rem; }
+.app-actions button { background: #fff; border: 1px solid #e5e1db; border-radius: 50%; color: var(--orange-dark); cursor: pointer; font-size: 1.15rem; height: 38px; width: 38px; }
+.app-actions button:nth-child(2) { background: var(--ink); color: var(--paper); height: 45px; width: 45px; }
+.surprise-note { color: #8b8580; font-family: var(--mono); font-size: .48rem; margin: 0; text-align: center; }
+.surprise-note span { color: var(--orange); }
+.hero-social-proof { align-items: center; bottom: 4rem; display: flex; font-family: var(--mono); font-size: .53rem; gap: .65rem; left: max(1.35rem, calc((100vw - 1120px) / 2)); line-height: 1.45; position: absolute; }
+.proof-avatars { display: flex; }
+.proof-avatars i { background: #c58b76; border: 2px solid #faf9f7; border-radius: 50%; display: block; height: 25px; margin-left: -5px; width: 25px; }
+.proof-avatars i:first-child { background: #92aaa0; margin-left: 0; }
+.proof-avatars i:last-child { background: #c8ac88; }
+.hero-social-proof b { color: var(--orange-dark); }
+.hero-aside { right: max(1rem, calc((100vw - 1120px) / 2)); top: 6rem; transform: scale(.8); }
+.hero-orbit { display: none; }
+
+@media (max-width: 760px) {
+  .hero { min-height: 900px; padding-top: 8rem; }
+  .hero-copy h1 { font-size: clamp(3.5rem, 15vw, 5.5rem); }
+  .app-preview { right: 1.5rem; top: 30rem; transform: rotate(2deg) scale(.9); transform-origin: top right; }
+  .hero-social-proof { bottom: 1.7rem; }
+  .hero-aside { display: none; }
+}
