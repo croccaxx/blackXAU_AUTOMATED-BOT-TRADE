@@ -190,8 +190,11 @@ appShell.addEventListener("touchend", (event) => {
 }, { passive: true });
 
 const candidates = [["Luca, 28", "ha salvato gli stessi concerti e vive a 12 minuti da te."], ["Sofia, 25", "cerca qualcuno con cui perdersi in una libreria."], ["Marco, 30", "ha scritto: il miglior piano è quello che cambia."]];
+let pendingMatch = null;
+let matchLocked = false;
 document.querySelector("#generate-match").addEventListener("click", () => {
   const button = document.querySelector("#generate-match");
+  if (matchLocked) return;
   button.disabled = true;
   button.classList.add("is-searching");
   button.innerHTML = '<span class="search-spinner" aria-hidden="true"></span> Sto cercando...';
@@ -199,13 +202,40 @@ document.querySelector("#generate-match").addEventListener("click", () => {
   const candidate = candidates[Math.floor(Math.random() * candidates.length)];
   const result = document.querySelector("#match-result");
   window.setTimeout(() => {
-    result.innerHTML = `<b>${candidate[0]} <span>✦ scelto dal destino</span></b><span>${candidate[1]}</span>`;
+    pendingMatch = candidate;
+    matchLocked = true;
+    document.querySelector("#match-name").textContent = candidate[0];
+    document.querySelector("#match-description").textContent = candidate[1];
     result.hidden = false;
     button.disabled = false;
     button.classList.remove("is-searching");
-    button.innerHTML = "Genera la mia sorpresa <span>✦</span>";
+    button.innerHTML = "Incontro in corso <span>⌁</span>";
+    button.classList.add("match-locked");
     result.classList.add("match-pop");
   }, 1500);
+});
+
+document.querySelector("#publish-connection").addEventListener("click", () => {
+  if (!pendingMatch) return;
+  const grid = document.querySelector("#collection-grid");
+  const emptyTile = grid.querySelector(".empty-tile");
+  if (emptyTile) emptyTile.remove();
+  const tile = document.createElement("div");
+  tile.className = "empty-tile published-tile";
+  tile.innerHTML = `<span>✦</span><small>${pendingMatch[0]}<br>Connection Photo</small>`;
+  grid.prepend(tile);
+  const count = grid.querySelectorAll(".published-tile").length;
+  document.querySelector("#collection-count").textContent = `${count} / 12`;
+  document.querySelector("#profile-photo-count").firstChild.textContent = `${count} `;
+  document.querySelector("#publish-connection").textContent = "Pubblicata ✓";
+  document.querySelector("#publish-connection").disabled = true;
+  document.querySelector(".match-lock").textContent = "La tua Connection Photo è nella collection. Puoi cercare di nuovo.";
+  matchLocked = false;
+  pendingMatch = null;
+  const generateButton = document.querySelector("#generate-match");
+  generateButton.disabled = false;
+  generateButton.classList.remove("match-locked");
+  generateButton.innerHTML = "Genera un altro incontro <span>✦</span>";
 });
 
 document.querySelectorAll(".story-pair:not(.story-add)").forEach((story) => {
