@@ -16,7 +16,7 @@
     <nav id="site-nav" class="site-nav" aria-label="Navigazione principale">
       <a href="#how">Come funziona</a>
       <a href="#collection">Connection photos</a>
-      <button class="text-button js-start" type="button">Crea il profilo <span>↗</span></button>
+      <button class="text-button js-auth" type="button">Accedi <span>↗</span></button>
     </nav>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Apri menu</span></button>
   </header>
@@ -25,9 +25,9 @@
     <section class="hero section-pad">
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-line"></span> Un social per incontrarsi davvero</p>
-        <h1>Non scegliere<br>tra mille volti.<br><strong>Lascia decidere<br>al caso.</strong></h1>
-        <p class="hero-intro">Crea il tuo spazio. Raccontati come vuoi. Poi lascia che il motore DESTINY trovi una persona che non avresti cercato.</p>
-        <button class="button button-primary js-start" type="button">Inizia da te <span aria-hidden="true">↗</span></button>
+        <h1>Incontri<br>reali.<br><strong>Scelti<br>diversamente.</strong></h1>
+        <p class="hero-intro">Un profilo personale, una community visiva e incontri generati dal caso. Accedi per entrare nel tuo spazio DESTINY.</p>
+        <button class="button button-primary js-auth" type="button">Accedi o registrati <span aria-hidden="true">↗</span></button>
         <p class="hero-caption"><span>18+</span> Solo persone reali, nella tua zona. Mai la tua posizione precisa.</p>
       </div>
       <div class="hero-visual">
@@ -63,6 +63,20 @@
       <div class="launch-explain"><p>Non decidiamo chi devi amare. Il sistema legge ciò che condividi, mescola compatibilità e casualità, e genera un incontro inatteso.</p><div class="engine-line"><span></span><b>compatibilità</b><i>+</i><b>casualità</b><i>=</i><strong>destiny</strong></div><small>Concept demo: nessun algoritmo reale attivo in questa versione.</small></div>
     </section>
 
+    <section id="auth" class="auth section-pad" hidden>
+      <div class="auth-card">
+        <div class="auth-heading"><span class="app-logo">destiny<span>.</span></span><p id="auth-kicker">IL TUO SPAZIO TI ASPETTA</p><h2 id="auth-title">Accedi al tuo<br><strong>profilo.</strong></h2><p id="auth-help">Usa la tua email e una password per ritrovare sempre il tuo spazio.</p></div>
+        <form id="auth-form" class="profile-form" novalidate>
+          <label for="auth-email">Email <span>*</span></label><input id="auth-email" type="email" placeholder="la-tua@email.com" required autocomplete="email">
+          <label for="auth-password">Password <span>*</span></label><input id="auth-password" type="password" placeholder="Almeno 8 caratteri" minlength="8" required autocomplete="current-password">
+          <p id="auth-status" class="form-status" role="status" aria-live="polite"></p>
+          <button class="button button-primary" type="submit"><span id="auth-action">Accedi</span> <span>↗</span></button>
+        </form>
+        <button class="auth-switch" id="auth-switch" type="button">Non hai ancora un profilo? <strong>Registrati</strong></button>
+        <p class="auth-note">Demo front-end: le credenziali vengono conservate solo nel browser locale. Nessun server reale.</p>
+      </div>
+    </section>
+
     <section id="onboarding" class="onboarding section-pad" hidden>
       <div class="onboarding-top"><button class="back-button js-home" type="button">← Torna alla home</button><span class="step-indicator">STEP <b id="step-number">01</b> / 04</span></div>
       <div class="onboarding-layout">
@@ -80,13 +94,16 @@
 
     <section id="app" class="app-shell section-pad" hidden>
       <div class="app-shell-header"><div><span class="app-kicker">IL TUO SPAZIO</span><h2 id="profile-name">marta_rossi</h2><p id="profile-location">Torino, Italia</p></div><button class="icon-button" type="button" aria-label="Impostazioni">⚙</button></div>
-      <div class="app-tabs"><button class="active" data-view="profile" type="button">Profilo</button><button data-view="discover" type="button">Destiny per te</button><button data-view="collection" type="button">Collection <span>4</span></button></div>
-      <div class="app-view" data-panel="profile"><div class="profile-hero"><div class="profile-avatar"></div><div class="profile-stats"><b>0 <small>connection</small></b><b>0 <small>photos</small></b><b>0 <small>giorni</small></b></div></div><p id="profile-bio" class="profile-bio">Il tuo spazio è pronto. Aggiungi ciò che ti rappresenta e lascia che il caso faccia il resto.</p><div class="profile-actions"><button type="button">Modifica profilo</button><button type="button">Condividi</button></div><div class="profile-empty"><span>✦</span><h3>La tua collection<br>inizia qui</h3><p>Quando incontrerai qualcuno, la vostra Connection Photo apparirà in questo spazio.</p></div></div>
+      <div class="app-tabs"><button class="active" data-view="home" type="button">⌂ <span>Home</span></button><button data-view="discover" type="button">✦ <span>Scopri</span></button><button data-view="messages" type="button">♡ <span>Messaggi</span></button><button data-view="collection" type="button">▧ <span>Collection</span></button><button data-view="profile" type="button">◉ <span>Profilo</span></button></div>
+      <div class="app-welcome"><span class="app-kicker">BENVENUTA NEL TUO SPAZIO</span><h3>Lascia decidere<br>al <strong>caso.</strong></h3><p>Qui comincia la tua esperienza DESTINY. Scegli una sezione, esplora e lascia che il motore faccia il primo passo.</p></div>
+      <div class="app-view" data-panel="home"><div class="home-cards"><div><span class="ai-badge">DESTINY ENGINE</span><h3>La tua prossima<br><strong>connessione.</strong></h3><p>Non cercare. Lascia che sia il momento giusto a trovarti.</p><button class="button button-primary" data-jump="discover" type="button">Scopri <span>✦</span></button></div><div class="home-stat"><b>0</b><span>connection photos<br>da vivere</span></div></div></div>
+      <div class="app-view" data-panel="profile" hidden><div class="profile-hero"><div class="profile-avatar"></div><div class="profile-stats"><b>0 <small>connection</small></b><b>0 <small>photos</small></b><b>0 <small>giorni</small></b></div></div><p id="profile-bio" class="profile-bio">Il tuo spazio è pronto. Aggiungi ciò che ti rappresenta e lascia che il caso faccia il resto.</p><div class="profile-actions"><button type="button">Modifica profilo</button><button type="button">Condividi</button></div></div>
       <div class="app-view" data-panel="discover" hidden><div class="ai-card"><span class="ai-badge">DESTINY ENGINE · LIVE</span><h3>Non stai cercando.<br>Stai per <strong>incontrare.</strong></h3><p>Lascia che il motore scelga una persona in modo casuale, tra compatibilità e sorpresa.</p><button id="generate-match" class="button button-primary" type="button">Genera la mia sorpresa <span>✦</span></button><div id="match-result" class="match-result" hidden></div></div></div>
+      <div class="app-view" data-panel="messages" hidden><div class="empty-panel"><span>♡</span><h3>Nessun messaggio ancora.</h3><p>I messaggi appariranno quando una connessione diventerà reciproca.</p></div></div>
       <div class="app-view" data-panel="collection" hidden><div class="collection-heading"><div><span class="app-kicker">ARCHIVIO PRIVATO</span><h3>Connection photos</h3></div><span>0 / 12</span></div><div class="app-collection-grid"><div class="empty-tile">✦<small>La prima<br>è ancora da vivere</small></div><div class="empty-tile">+</div><div class="empty-tile">+</div></div></div>
     </section>
 
-    <section id="waitlist" class="waitlist section-pad"><div><p class="eyebrow"><span class="eyebrow-line"></span> Il primo capitolo</p><h2>Entra prima<br>degli <strong>altri.</strong></h2><p>DESTINY parte da una sola zona. Crea il tuo spazio e lasciati sorprendere.</p></div><button class="button button-light js-start" type="button">Crea il profilo <span>↗</span></button></section>
+    <section id="waitlist" class="waitlist section-pad"><div><p class="eyebrow"><span class="eyebrow-line"></span> Il primo capitolo</p><h2>Entra prima<br>degli <strong>altri.</strong></h2><p>DESTINY parte da una sola zona. Crea il tuo spazio e lasciati sorprendere.</p></div><button class="button button-light js-auth" type="button">Accedi o registrati <span>↗</span></button></section>
   </main>
   <footer class="site-footer section-pad"><a class="brand" href="#top">destiny<span>.</span></a><p>Made for the unexpected.<br><span>© 2025 DESTINY concept · demo only</span></p><p class="footer-disclaimer">Nessun dato viene inviato o salvato.</p></footer>
   <script src="script.js"></script>
