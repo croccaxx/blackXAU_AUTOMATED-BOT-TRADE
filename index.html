@@ -3,181 +3,92 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DESTINY è il modo più umano di incontrarsi: persone reali, nella tua zona, senza swipe infinito.">
-  <title>DESTINY — lasciati sorprendere</title>
+  <meta name="description" content="DESTINY combina profili visuali e incontri casuali scelti dal suo motore di compatibilità.">
+  <title>DESTINY — incontri scelti dal caso</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="DESTINY home">DESTINY<span class="brand-dot">.</span></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span>
-      <span class="sr-only">Apri menu</span>
-    </button>
+    <a class="brand" href="#top" aria-label="DESTINY home">destiny<span>.</span></a>
     <nav id="site-nav" class="site-nav" aria-label="Navigazione principale">
       <a href="#how">Come funziona</a>
-      <a href="#collection">Collection</a>
-      <a href="#waitlist" class="nav-cta">Entra nella waitlist <span aria-hidden="true">↗</span></a>
+      <a href="#collection">Connection photos</a>
+      <button class="text-button js-start" type="button">Crea il profilo <span>↗</span></button>
     </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Apri menu</span></button>
   </header>
 
   <main id="top">
     <section class="hero section-pad">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="eyebrow-line"></span> Dating, ma più umano</p>
-        <h1>La persona<br>giusta non la<br><em>cerchi.</em></h1>
-        <p class="hero-intro">DESTINY unisce la parte visuale dei social alla sorpresa di un incontro reale. Scopri chi ti è vicino senza trasformare le persone in un catalogo.</p>
-        <a class="button button-primary" href="#waitlist">Entra nella waitlist <span aria-hidden="true">↗</span></a>
+        <p class="eyebrow"><span class="eyebrow-line"></span> Un social per incontrarsi davvero</p>
+        <h1>Non scegliere<br>tra mille volti.<br><strong>Lascia decidere<br>al caso.</strong></h1>
+        <p class="hero-intro">Crea il tuo spazio. Raccontati come vuoi. Poi lascia che il motore DESTINY trovi una persona che non avresti cercato.</p>
+        <button class="button button-primary js-start" type="button">Inizia da te <span aria-hidden="true">↗</span></button>
+        <p class="hero-caption"><span>18+</span> Solo persone reali, nella tua zona. Mai la tua posizione precisa.</p>
       </div>
-      <div class="app-preview" aria-label="Anteprima dell'app DESTINY">
-        <div class="app-topbar"><span class="app-logo">destiny<span>.</span></span><span class="app-icon">♡</span></div>
-        <div class="app-tabs"><b>For you</b><span>Nearby</span><span>Connections</span></div>
-        <article class="profile-preview">
-          <div class="profile-photo"><span class="online-dot"></span><span class="photo-location">●  Torino, San Salvario</span></div>
-          <div class="profile-info"><div><h2>Giulia, 26</h2><p>cerco concerti, tramonti<br>e qualcuno che non faccia ghosting</p></div><span class="verified">✓</span></div>
-          <div class="profile-tags"><span>fotografia</span><span>indie music</span><span>caffè</span></div>
-        </article>
-        <div class="app-actions"><button type="button" aria-label="Passa oltre">×</button><button type="button" aria-label="Lascia fare al destino">✦</button><button type="button" aria-label="Mi piace">♥</button></div>
-        <p class="surprise-note"><span>✦</span> Questa persona non è stata scelta da te</p>
-      </div>
-      <div class="hero-social-proof"><span class="proof-avatars"><i></i><i></i><i></i></span><span><b>2.481</b> persone stanno aspettando<br>di incontrarsi diversamente</span></div>
-      <div class="hero-aside">
-        <div class="hero-stamp" aria-hidden="true">
-          <span>MEET</span><strong>IRL<br>MORE</strong><small>✳ 001 / 2025</small>
+      <div class="hero-visual">
+        <div class="hero-card back-card"></div>
+        <div class="hero-card front-card">
+          <div class="hero-card-photo"><span class="story-ring">●</span><span class="photo-place">Torino · oggi</span></div>
+          <div class="hero-card-content"><span class="tiny-label">UNA PERSONA SCELTA DAL DESTINO</span><h2>Giulia, 26 <i>✓</i></h2><p>fotografia, concerti piccoli<br>e conversazioni senza fretta</p><div class="tag-row"><span>photography</span><span>live music</span></div></div>
         </div>
-        <p class="vertical-label">SCROLL TO DISCOVER</p>
+        <div class="hero-bubble"><span>✦</span><b>01</b><small>la prossima<br>connessione</small></div>
       </div>
-      <div class="scroll-cue" aria-hidden="true"><span></span> Scorri per scoprire</div>
     </section>
 
     <section id="how" class="how section-pad">
-      <div class="section-heading">
-        <p class="eyebrow"><span class="eyebrow-line"></span> Il metodo</p>
-        <h2>Lascia fare al<br><em>caso.</em></h2>
-        <p>Abbiamo tolto il rumore. Rimane la parte più interessante: l'imprevisto.</p>
-      </div>
-      <div class="steps">
-        <article class="step">
-          <span class="step-number">01</span>
-          <div class="step-icon">◎</div>
-          <h3>Raccontaci<br>chi sei</h3>
-          <p>Qualche dettaglio, quello giusto. Non un curriculum.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">02</span>
-          <div class="step-icon">✳</div>
-          <h3>Definisci<br>la tua zona</h3>
-          <p>Scegli dove vuoi che succeda. Restiamo vicini, mai precisi.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">03</span>
-          <div class="step-icon">↯</div>
-          <h3>Ricevi<br>una sorpresa</h3>
-          <p>Una persona. Un posto. Un momento che non avevi previsto.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">04</span>
-          <div class="step-icon">◌</div>
-          <h3>Incontratevi<br>davvero</h3>
-          <p>Una connection photo, un ricordo che non resta solo online.</p>
-        </article>
-        <article class="step">
-          <span class="step-number">05</span>
-          <div class="step-icon">♡</div>
-          <h3>Il resto<br>è vostro</h3>
-          <p>Nessuna pressione. La storia la scrivete voi.</p>
-        </article>
+      <div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> Prima di tutto</p><h2>Il tuo profilo<br>è il tuo <strong>spazio.</strong></h2><p>Non una scheda da compilare in fretta. Una pagina che racconta chi sei, anche quando non stai facendo dating.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card"><span class="feature-number">01</span><span class="feature-icon">◎</span><h3>Costruisci<br>il tuo profilo</h3><p>Nickname, foto, gusti e la tua energia. Tutto ciò che vuoi far vedere.</p></article>
+        <article class="feature-card feature-dark"><span class="feature-number">02</span><span class="feature-icon">✦</span><h3>Il motore<br>sceglie per te</h3><p>DESTINY combina affinità, zona e casualità. Niente swipe infinito.</p></article>
+        <article class="feature-card"><span class="feature-number">03</span><span class="feature-icon">▧</span><h3>Colleziona<br>gli incontri</h3><p>Ogni connection photo resta nel tuo archivio personale.</p></article>
       </div>
     </section>
 
     <section id="collection" class="collection section-pad">
-      <div class="collection-top">
-        <div class="section-heading">
-          <p class="eyebrow"><span class="eyebrow-line"></span> The collection</p>
-          <h2>Persone<br><em>non profili.</em></h2>
-        </div>
-        <p class="collection-note">Una piccola collezione di incontri realmente accaduti.<br><span>Le persone non sono contenuti. Sono possibilità.</span></p>
-      </div>
-      <div class="people-grid">
-        <article class="person-card card-large">
-          <div class="person-image person-one"><span class="image-tag">A / 27</span></div>
-          <div class="person-meta"><div><h3>Alessia</h3><p>Fotografa · Torino</p></div><span class="card-arrow">↗</span></div>
-        </article>
-        <article class="person-card card-offset">
-          <div class="person-image person-two"><span class="image-tag">M / 30</span></div>
-          <div class="person-meta"><div><h3>Marco</h3><p>Architetto · Milano</p></div><span class="card-arrow">↗</span></div>
-        </article>
-        <article class="person-card card-small">
-          <div class="person-image person-three"><span class="image-tag">S / 25</span></div>
-          <div class="person-meta"><div><h3>Sofia</h3><p>Musicista · Roma</p></div><span class="card-arrow">↗</span></div>
-        </article>
-      </div>
-      <div class="connection-photo">
-        <div class="connection-copy">
-          <p class="eyebrow"><span class="eyebrow-line"></span> Dopo il match</p>
-          <h2>La prova<br>che è <em>successo.</em></h2>
-          <p>Quando vi incontrate, scattate una Connection Photo. Un gesto semplice, privato, solo vostro.</p>
-          <span class="photo-note">Nessun upload automatico. Nessuna vetrina.</span>
-        </div>
-        <div class="photo-frame" aria-label="Foto demo di una coppia che si è incontrata">
-          <div class="photo-grain"></div>
-          <div class="photo-sun"></div>
-          <span class="photo-caption">CONNECTION<br>PHOTO / 014</span>
-          <span class="photo-date">26.08.25 — 19:42</span>
-        </div>
+      <div class="section-heading"><p class="eyebrow"><span class="eyebrow-line"></span> Dopo l'incontro</p><h2>Il tuo profilo.<br>La tua <strong>collection.</strong></h2><p>Come un feed privato, ma fatto di momenti vissuti. Le foto degli incontri appartengono a te.</p></div>
+      <div class="collection-demo">
+        <div class="demo-profile-bar"><div class="demo-avatar"></div><div><b>marta_rossi</b><span>Torino, Italia</span></div><button type="button" aria-label="Altre opzioni">•••</button></div>
+        <div class="demo-photo-grid"><div class="demo-photo demo-photo-a"></div><div class="demo-photo demo-photo-b"></div><div class="demo-photo demo-photo-c"></div><div class="demo-photo demo-photo-d"><span>+ 8</span></div></div>
+        <div class="demo-stats"><b>12 <small>connessioni</small></b><b>4 <small>connection photos</small></b><b>3 <small>settimane</small></b></div>
       </div>
     </section>
 
     <section class="launch section-pad">
-      <div class="launch-mark" aria-hidden="true">TO<br>BE<br>CONTINUED</div>
-      <div class="launch-copy">
-        <p class="eyebrow"><span class="eyebrow-line"></span> Il primo capitolo</p>
-        <h2>Si parte da<br><em>una zona.</em></h2>
-        <p>DESTINY nasce in una sola zona, per far incontrare davvero le persone prima di diventare ovunque.</p>
-        <div class="zone-pill"><span class="zone-pulse"></span> Zona in esplorazione <strong>?</strong></div>
-      </div>
-      <div class="launch-aside"><span>001</span><p>Il luogo lo scegli tu.<br>La sorpresa no.</p></div>
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> Il motore DESTINY</p><h2>Il caso,<br>con un po'<br>di <strong>intelligenza.</strong></h2></div>
+      <div class="launch-explain"><p>Non decidiamo chi devi amare. Il sistema legge ciò che condividi, mescola compatibilità e casualità, e genera un incontro inatteso.</p><div class="engine-line"><span></span><b>compatibilità</b><i>+</i><b>casualità</b><i>=</i><strong>destiny</strong></div><small>Concept demo: nessun algoritmo reale attivo in questa versione.</small></div>
     </section>
 
-    <section id="waitlist" class="waitlist section-pad">
-      <div class="waitlist-intro">
-        <p class="eyebrow"><span class="eyebrow-line"></span> Sei dei nostri?</p>
-        <h2>Non aspettare<br><em>il momento.</em></h2>
-        <p>Lascia il tuo segno. Ti faremo sapere quando DESTINY arriva nella tua zona.</p>
-        <p class="form-privacy">I tuoi dati restano qui. Questa è una demo: non inviamo né salviamo nulla.</p>
-        <div class="safety-note">
-          <strong>Tu hai sempre il controllo.</strong>
-          <span>Puoi bloccare o segnalare una connessione in qualsiasi momento. La tua privacy viene prima dell'incontro.</span>
-        </div>
+    <section id="onboarding" class="onboarding section-pad" hidden>
+      <div class="onboarding-top"><button class="back-button js-home" type="button">← Torna alla home</button><span class="step-indicator">STEP <b id="step-number">01</b> / 04</span></div>
+      <div class="onboarding-layout">
+        <div class="onboarding-copy"><p class="eyebrow"><span class="eyebrow-line"></span> Crea il tuo spazio</p><h2 id="onboarding-title">Partiamo<br>dal tuo <strong>nome.</strong></h2><p id="onboarding-help">Scegli come vuoi essere chiamato. Non serve il tuo nome vero.</p></div>
+        <form id="profile-form" class="profile-form" novalidate>
+          <fieldset data-step="1"><label for="nickname">Il tuo nickname <span>*</span></label><input id="nickname" name="nickname" type="text" placeholder="es. marta_rossi" required autocomplete="nickname"><p class="field-hint">Puoi cambiarlo quando vuoi.</p></fieldset>
+          <fieldset data-step="2" hidden><label for="age">Quanti anni hai? <span>*</span></label><input id="age" name="age" type="number" min="18" max="99" placeholder="18+" required><label for="city">In quale zona vuoi incontrare il caso? <span>*</span></label><input id="city" name="city" type="text" placeholder="Città o quartiere" required></fieldset>
+          <fieldset data-step="3" hidden><label for="looking">Cosa vuoi trovare? <span>*</span></label><select id="looking" name="looking" required><option value="">Scegli quello che senti</option><option>Una nuova connessione</option><option>Un appuntamento</option><option>Nuove amicizie</option><option>Non lo so ancora</option></select><label for="interests">Tre cose che ti accendono</label><input id="interests" name="interests" type="text" placeholder="es. cinema, bici, ramen"></fieldset>
+          <fieldset data-step="4" hidden><label for="email">Dove possiamo scriverti? <span>*</span></label><input id="email" name="email" type="email" placeholder="la-tua@email.com" required autocomplete="email"><label class="consent"><input type="checkbox" id="consent" required><span class="checkmark"></span><span>Ho almeno 18 anni e accetto la privacy notice della demo. <b>*</b></span></label></fieldset>
+          <p id="onboarding-status" class="form-status" role="status" aria-live="polite"></p>
+          <button class="button button-primary" type="submit"><span id="form-action">Continua</span> <span>↗</span></button>
+        </form>
       </div>
-      <form id="waitlist-form" class="waitlist-form" novalidate>
-        <div class="field-row">
-          <label for="nickname">Come ti chiami? <span>*</span></label>
-          <input id="nickname" name="nickname" type="text" placeholder="Il tuo nickname" required autocomplete="nickname">
-        </div>
-        <div class="field-row split">
-          <div><label for="age">Quanti anni hai? <span>*</span></label><input id="age" name="age" type="number" min="18" max="99" placeholder="18+" required></div>
-          <div><label for="gender">Ti identifichi come</label><select id="gender" name="gender"><option value="">Scegli</option><option>Donna</option><option>Uomo</option><option>Non binario</option><option>Preferisco non dirlo</option></select></div>
-        </div>
-        <div class="field-row"><label for="city">Dove vuoi incontrare il caso? <span>*</span></label><input id="city" name="city" type="text" placeholder="Zona o città (non la tua posizione precisa)" required autocomplete="address-level2"></div>
-        <div class="field-row"><label for="looking">Cosa cerchi?</label><select id="looking" name="looking"><option value="">Lasciami scegliere</option><option>Una nuova connessione</option><option>Un appuntamento</option><option>Nuove amicizie</option><option>Non lo so ancora</option></select></div>
-        <div class="field-row"><label for="email">Dove possiamo scriverti? <span>*</span></label><input id="email" name="email" type="email" placeholder="la-tua@email.com" required autocomplete="email"></div>
-        <label class="consent"><input type="checkbox" id="consent" required><span class="checkmark"></span><span>Ho almeno 18 anni e accetto la <u>privacy notice</u> di questa demo. <b>*</b></span></label>
-        <button class="button button-light" type="submit">Entrami nella waitlist <span aria-hidden="true">↗</span></button>
-        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-      </form>
     </section>
+
+    <section id="app" class="app-shell section-pad" hidden>
+      <div class="app-shell-header"><div><span class="app-kicker">IL TUO SPAZIO</span><h2 id="profile-name">marta_rossi</h2><p id="profile-location">Torino, Italia</p></div><button class="icon-button" type="button" aria-label="Impostazioni">⚙</button></div>
+      <div class="app-tabs"><button class="active" data-view="profile" type="button">Profilo</button><button data-view="discover" type="button">Destiny per te</button><button data-view="collection" type="button">Collection <span>4</span></button></div>
+      <div class="app-view" data-panel="profile"><div class="profile-hero"><div class="profile-avatar"></div><div class="profile-stats"><b>0 <small>connection</small></b><b>0 <small>photos</small></b><b>0 <small>giorni</small></b></div></div><p id="profile-bio" class="profile-bio">Il tuo spazio è pronto. Aggiungi ciò che ti rappresenta e lascia che il caso faccia il resto.</p><div class="profile-actions"><button type="button">Modifica profilo</button><button type="button">Condividi</button></div><div class="profile-empty"><span>✦</span><h3>La tua collection<br>inizia qui</h3><p>Quando incontrerai qualcuno, la vostra Connection Photo apparirà in questo spazio.</p></div></div>
+      <div class="app-view" data-panel="discover" hidden><div class="ai-card"><span class="ai-badge">DESTINY ENGINE · LIVE</span><h3>Non stai cercando.<br>Stai per <strong>incontrare.</strong></h3><p>Lascia che il motore scelga una persona in modo casuale, tra compatibilità e sorpresa.</p><button id="generate-match" class="button button-primary" type="button">Genera la mia sorpresa <span>✦</span></button><div id="match-result" class="match-result" hidden></div></div></div>
+      <div class="app-view" data-panel="collection" hidden><div class="collection-heading"><div><span class="app-kicker">ARCHIVIO PRIVATO</span><h3>Connection photos</h3></div><span>0 / 12</span></div><div class="app-collection-grid"><div class="empty-tile">✦<small>La prima<br>è ancora da vivere</small></div><div class="empty-tile">+</div><div class="empty-tile">+</div></div></div>
+    </section>
+
+    <section id="waitlist" class="waitlist section-pad"><div><p class="eyebrow"><span class="eyebrow-line"></span> Il primo capitolo</p><h2>Entra prima<br>degli <strong>altri.</strong></h2><p>DESTINY parte da una sola zona. Crea il tuo spazio e lasciati sorprendere.</p></div><button class="button button-light js-start" type="button">Crea il profilo <span>↗</span></button></section>
   </main>
-
-  <footer class="site-footer section-pad">
-    <a class="brand" href="#top">DESTINY<span class="brand-dot">.</span></a>
-    <p>Made for the unexpected.<br><span>© 2025 DESTINY concept</span></p>
-    <div class="footer-links"><a href="#waitlist">Privacy</a><a href="#top">Instagram ↗</a></div>
-    <p class="footer-disclaimer">Concept demo. Nessun servizio attivo, nessun dato inviato.</p>
-  </footer>
+  <footer class="site-footer section-pad"><a class="brand" href="#top">destiny<span>.</span></a><p>Made for the unexpected.<br><span>© 2025 DESTINY concept · demo only</span></p><p class="footer-disclaimer">Nessun dato viene inviato o salvato.</p></footer>
   <script src="script.js"></script>
 </body>
 </html>

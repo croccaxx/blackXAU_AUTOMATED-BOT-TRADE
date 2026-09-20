@@ -4,12 +4,12 @@ Landing page concept per DESTINY, un modo più umano e sorprendente di incontrar
 
 ## Cosa contiene
 
-- Hero con il messaggio “NON SCEGLI TU. LASCIATI SORPRENDERE.”
-- Percorso in 5 passaggi
-- Collection di incontri demo e Connection Photo
-- Lancio iniziale in una singola zona
-- Waitlist mobile-first con nickname, età 18+, genere, zona/città, cosa cerchi ed email
-- Informazioni su privacy, blocco/segnalazione e sicurezza del concept
+- Landing orientata al prodotto, con profili visuali e linguaggio social/dating
+- Onboarding progressivo in 4 step: nickname, età/zona, interessi e email
+- Spazio profilo personale separato dalla landing, con bio, statistiche e modifica futura
+- Tab "Destiny per te" con motore concettuale che genera connessioni casuali
+- Tab Collection con archivio privato delle Connection Photos
+- Informazioni su privacy, posizione approssimativa, blocco/segnalazione e sicurezza del concept
 
 ## Sviluppo
 
@@ -23,7 +23,7 @@ script.js
 
 Apri `index.html` direttamente nel browser per un'anteprima locale. Non è richiesto un server di sviluppo o un processo di build.
 
-Il form della waitlist è volutamente front-end-only: valida i campi nel browser, mostra un feedback locale e non invia, salva o persiste dati. Le persone e le immagini della Collection sono elementi demo del concept; non c'è geolocalizzazione precisa, upload reale o servizio attivo.
+L'onboarding e il profilo sono volutamente front-end-only: validano i campi nel browser e costruiscono una schermata profilo locale senza inviare, salvare o persistere dati. Il "DESTINY engine" è un placeholder di prodotto che seleziona demo localmente; non è un'AI reale e non esiste ancora un backend di matching, messaggistica o upload. Le persone e le immagini della Collection sono elementi demo del concept; non c'è geolocalizzazione precisa o servizio attivo.
 
 ## GitHub Pages
 
