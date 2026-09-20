@@ -3,6 +3,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const auth = document.querySelector("#auth");
 const onboarding = document.querySelector("#onboarding");
 const appShell = document.querySelector("#app");
+const storyDetail = document.querySelector("#story-detail");
 const authForm = document.querySelector("#auth-form");
 const authStatus = document.querySelector("#auth-status");
 const authSwitch = document.querySelector("#auth-switch");
@@ -199,6 +200,17 @@ document.querySelector("#generate-match").addEventListener("click", () => {
     button.innerHTML = "Genera la mia sorpresa <span>✦</span>";
     result.classList.add("match-pop");
   }, 1500);
+});
+
+document.querySelectorAll(".story-pair:not(.story-add)").forEach((story) => {
+  story.addEventListener("click", () => {
+    document.querySelector("#story-pair-name").textContent = story.dataset.pair;
+    document.querySelector("#story-pair-detail").textContent = story.dataset.detail;
+    storyDetail.hidden = false;
+  });
+});
+document.querySelector(".story-close")?.addEventListener("click", () => {
+  storyDetail.hidden = true;
 });
 
 menuToggle?.addEventListener("click", () => {
