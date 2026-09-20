@@ -32,6 +32,7 @@ function publicSections(hidden) {
 
 function openAuth() {
   publicSections(true);
+  document.body.classList.remove("app-interface-active");
   auth.hidden = false;
   onboarding.hidden = true;
   appShell.hidden = true;
@@ -40,6 +41,7 @@ function openAuth() {
 }
 
 function showOnboarding() {
+  document.body.classList.add("app-interface-active");
   auth.hidden = true;
   onboarding.hidden = false;
   showStep(1);
@@ -93,6 +95,7 @@ authForm.addEventListener("submit", (event) => {
 homeButton.addEventListener("click", () => {
   onboarding.hidden = true;
   auth.hidden = false;
+  document.body.classList.remove("app-interface-active");
   authMode = "login";
   publicSections(true);
 });
@@ -136,6 +139,7 @@ form.addEventListener("submit", (event) => {
 });
 
 function openApp() {
+  document.body.classList.add("app-interface-active");
   document.querySelectorAll("main > section").forEach((section) => { section.hidden = !["app"].includes(section.id); });
   appShell.hidden = false;
   const profile = JSON.parse(localStorage.getItem("destiny-profile") || "{}");
