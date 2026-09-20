@@ -19,6 +19,8 @@ const appViews = ["home", "discover", "messages", "profile"];
 let activeView = "home";
 let touchStartX = 0;
 let touchStartY = 0;
+let chatTouchStartX = 0;
+let chatTouchStartY = 0;
 
 const stepCopy = [
   ["Partiamo<br>dal tuo <strong>nome.</strong>", "Scegli come vuoi essere chiamato. Non serve il tuo nome vero."],
@@ -204,6 +206,27 @@ appShell.addEventListener("touchend", (event) => {
   }
   if (nextIndex !== currentIndex) showView(appViews[nextIndex], deltaX < 0 ? "next" : "prev");
 }, { passive: true });
+
+const chatPanel = document.querySelector("#chat-panel");
+chatPanel.addEventListener("touchstart", (event) => {
+  chatTouchStartX = event.changedTouches[0].screenX;
+  chatTouchStartY = event.changedTouches[0].screenY;
+}, { passive: true });
+
+chatPanel.addEventListener("touchmove", (event) => {
+  const deltaX = event.changedTouches[0].screenX - chatTouchStartX;
+  const deltaY = event.changedTouches[0].screenY - chatTouchStartY;
+  if (Math.abs(deltaX) > Math.abs(deltaY)) event.preventDefault();
+}, { passive: false });
+
+chatPanel.addEventListener("touchend", (event) => {
+  const deltaX = event.changedTouches[0].screenX - chatTouchStartX;
+  const deltaY = event.changedTouches[0].screenY - chatTouchStartY;
+  if (deltaX > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
+    event.preventDefault();
+    closeChat();
+  }
+}, { passive: false });
 
 const candidates = [["Luca, 28", "ha salvato gli stessi concerti e vive a 12 minuti da te."], ["Sofia, 25", "cerca qualcuno con cui perdersi in una libreria."], ["Marco, 30", "ha scritto: il miglior piano è quello che cambia."]];
 let pendingMatch = JSON.parse(localStorage.getItem("destiny-pending-match") || "null");
