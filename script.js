@@ -230,10 +230,27 @@ document.querySelector("#generate-match").addEventListener("click", () => {
     result.classList.add("match-pop");
     document.querySelector("#message-list").innerHTML = `<button class="message-thread" type="button"><span class="thread-avatar"></span><span><b>${candidate[0]}</b><small>La tua nuova connessione è qui ✦</small></span><strong>1</strong></button>`;
     document.querySelector("#chat-name").textContent = candidate[0];
+  }, 1500);
+});
+
+document.querySelector("#begin-chat").addEventListener("click", () => {
+  const burst = document.createElement("div");
+  burst.className = "confetti-burst";
+  for (let index = 0; index < 26; index += 1) {
+    const piece = document.createElement("i");
+    piece.style.setProperty("--x", `${Math.random() * 220 - 110}px`);
+    piece.style.setProperty("--y", `${Math.random() * 220 - 110}px`);
+    piece.style.setProperty("--r", `${Math.random() * 520 - 260}deg`);
+    piece.style.setProperty("--h", `${Math.floor(Math.random() * 360)}deg`);
+    burst.appendChild(piece);
+  }
+  document.body.appendChild(burst);
+  window.setTimeout(() => {
+    burst.remove();
     showView("messages", "next");
     document.querySelector("#message-list").hidden = true;
     document.querySelector("#chat-panel").hidden = false;
-  }, 1500);
+  }, 650);
 });
 
 document.querySelector("#message-list").addEventListener("click", (event) => {
