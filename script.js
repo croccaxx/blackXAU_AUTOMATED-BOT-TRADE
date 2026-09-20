@@ -149,6 +149,9 @@ function openApp() {
   document.querySelector("#profile-name").textContent = profile.nickname || "il tuo profilo";
   document.querySelector("#profile-location").textContent = profile.city ? `${profile.city}, Italia` : "La tua zona";
   document.querySelector("#profile-bio").textContent = profile.interests || "Il tuo spazio è pronto. Lascia che il caso faccia il resto.";
+  if (activeChat) {
+    document.querySelector("#message-list").innerHTML = `<button class="message-thread" type="button"><span class="thread-avatar"></span><span><b>${activeChat[0]}</b><small>La tua connessione è qui ✦</small></span><strong>1</strong></button>`;
+  }
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -192,6 +195,7 @@ appShell.addEventListener("touchend", (event) => {
 const candidates = [["Luca, 28", "ha salvato gli stessi concerti e vive a 12 minuti da te."], ["Sofia, 25", "cerca qualcuno con cui perdersi in una libreria."], ["Marco, 30", "ha scritto: il miglior piano è quello che cambia."]];
 let pendingMatch = null;
 let matchLocked = false;
+let activeChat = JSON.parse(localStorage.getItem("destiny-chat") || "null");
 document.querySelector("#generate-match").addEventListener("click", () => {
   const button = document.querySelector("#generate-match");
   if (matchLocked) return;
@@ -203,6 +207,8 @@ document.querySelector("#generate-match").addEventListener("click", () => {
   const result = document.querySelector("#match-result");
   window.setTimeout(() => {
     pendingMatch = candidate;
+    activeChat = candidate;
+    localStorage.setItem("destiny-chat", JSON.stringify(candidate));
     matchLocked = true;
     document.querySelector("#match-name").textContent = candidate[0];
     document.querySelector("#match-description").textContent = candidate[1];
@@ -212,6 +218,11 @@ document.querySelector("#generate-match").addEventListener("click", () => {
     button.innerHTML = "Incontro in corso <span>⌁</span>";
     button.classList.add("match-locked");
     result.classList.add("match-pop");
+    document.querySelector("#message-list").innerHTML = `<button class="message-thread" type="button"><span class="thread-avatar"></span><span><b>${candidate[0]}</b><small>La tua nuova connessione è qui ✦</small></span><strong>1</strong></button>`;
+    document.querySelector("#chat-name").textContent = candidate[0];
+    showView("messages", "next");
+    document.querySelector("#message-list").hidden = true;
+    document.querySelector("#chat-panel").hidden = false;
   }, 1500);
 });
 
@@ -236,6 +247,53 @@ document.querySelector("#publish-connection").addEventListener("click", () => {
   generateButton.disabled = false;
   generateButton.classList.remove("match-locked");
   generateButton.innerHTML = "Genera un altro incontro <span>✦</span>";
+});
+
+document.querySelector("#message-list").addEventListener("click", (event) => {
+  const thread = event.target.closest(".message-thread");
+  if (!thread || !activeChat) return;
+  document.querySelector("#message-list").hidden = true;
+  document.querySelector("#chat-panel").hidden = false;
+});
+
+document.querySelector("#close-chat").addEventListener("click", () => {
+  document.querySelector("#chat-panel").hidden = true;
+  document.querySelector("#message-list").hidden = false;
+});
+
+document.querySelector("#chat-camera").addEventListener("click", () => {
+  const input = document.createElement("input");
+  input.type = "file";
+  input.accept = "image/*";
+  input.capture = "environment";
+  input.addEventListener("change", () => {
+    if (!input.files?.length) return;
+    const bubble = document.createElement("div");
+    bubble.className = "chat-bubble chat-photo-preview";
+    bubble.innerHTML = 'Connection Photo pronta ✦ <button class="publish-chat-photo" type="button">Pubblica insieme</button>';
+    document.querySelector(".chat-body").appendChild(bubble);
+    document.querySelector("#chat-camera").textContent = "✓";
+  });
+
+  document.querySelector(".chat-body").addEventListener("click", (event) => {
+    if (!event.target.classList.contains("publish-chat-photo")) return;
+    const photo = document.createElement("div");
+    photo.className = "empty-tile published-tile";
+    photo.innerHTML = `<span>✦</span><small>Tu + ${activeChat?.[0] || "la tua connessione"}<br>Connection Photo · @${(activeChat?.[0] || "destiny").split(",")[0].toLowerCase().replace(/\s/g, "_")}</small>`;
+    const grid = document.querySelector("#collection-grid");
+    grid.querySelector(".empty-tile:not(.published-tile)")?.remove();
+    grid.prepend(photo);
+    const count = grid.querySelectorAll(".published-tile").length;
+    document.querySelector("#collection-count").textContent = `${count} / 12`;
+    document.querySelector("#profile-photo-count").firstChild.textContent = `${count} `;
+    const notification = document.createElement("div");
+    notification.className = "chat-bubble chat-notification";
+    notification.textContent = `Notifica inviata a ${activeChat?.[0] || "la tua connessione"}: può pubblicare la stessa foto nel suo profilo.`;
+    document.querySelector(".chat-body").appendChild(notification);
+    event.target.textContent = "Pubblicata ✓";
+    event.target.disabled = true;
+  });
+  input.click();
 });
 
 document.querySelectorAll(".story-pair:not(.story-add)").forEach((story) => {

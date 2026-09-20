@@ -9,6 +9,9 @@ Landing page concept per DESTINY, un modo più umano e sorprendente di incontrar
 - Onboarding progressivo in 4 step: nickname, età/zona, interessi e email
 - Spazio profilo personale separato dalla landing, con bio, statistiche e navigazione dedicata
 - Sezioni separate Home, Scopri, Messaggi, Collection e Profilo
+- Chat persistente per ogni connessione, accessibile dalla sezione Messaggi
+- Azione fotocamera nella chat per simulare la Connection Photo condivisa
+- Notifica al secondo profilo e tag pubblico nella foto quando la connessione viene pubblicata
 - Tab "Destiny per te" con motore concettuale che genera connessioni casuali
 - Tab Collection con archivio privato delle Connection Photos
 - Informazioni su privacy, posizione approssimativa, blocco/segnalazione e sicurezza del concept
@@ -25,7 +28,7 @@ script.js
 
 Apri `index.html` direttamente nel browser per un'anteprima locale. Non è richiesto un server di sviluppo o un processo di build.
 
-L'accesso, l'onboarding e il profilo sono una simulazione front-end: l'account, la sessione e il profilo vengono conservati in `localStorage` per non perderli nello stesso browser. Non vengono inviati a un server. Per un prodotto reale serviranno backend, password hashate, sessioni sicure e recupero account; non usare questa demo per credenziali reali. Il "DESTINY engine" è un placeholder che seleziona demo localmente; non è un'AI reale e non esiste ancora un backend di matching, messaggistica o upload. Le persone e le immagini della Collection sono elementi demo del concept; non c'è geolocalizzazione precisa o servizio attivo.
+L'accesso, l'onboarding, il profilo, le chat e la Connection Photo sono una simulazione front-end: account, sessione, profilo e stato della demo vengono conservati in `localStorage` per non perderli nello stesso browser. La fotocamera apre il selettore file del dispositivo, ma non esegue upload reale. Non vengono inviati dati a un server. Per un prodotto reale serviranno backend, password hashate, sessioni sicure, messaggistica, notifiche e consenso condiviso per pubblicare la foto; non usare questa demo per credenziali reali. Il "DESTINY engine" è un placeholder che seleziona demo localmente; non è un'AI reale. Le persone e le immagini della Collection sono elementi demo del concept; non c'è geolocalizzazione precisa o servizio attivo.
 
 ## GitHub Pages
 
