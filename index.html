@@ -78,14 +78,13 @@
     </section>
 
     <section id="onboarding" class="onboarding section-pad" hidden>
-      <div class="onboarding-top"><button class="back-button js-home" type="button">← Torna alla home</button><span class="step-indicator">STEP <b id="step-number">01</b> / 04</span></div>
+      <div class="onboarding-top"><button class="back-button js-home" type="button">← Torna alla home</button><span class="step-indicator">STEP <b id="step-number">01</b> / 03</span></div>
       <div class="onboarding-layout">
         <div class="onboarding-copy"><p class="eyebrow"><span class="eyebrow-line"></span> Crea il tuo spazio</p><h2 id="onboarding-title">Partiamo<br>dal tuo <strong>nome.</strong></h2><p id="onboarding-help">Scegli come vuoi essere chiamato. Non serve il tuo nome vero.</p></div>
         <form id="profile-form" class="profile-form" novalidate>
           <fieldset data-step="1"><label for="nickname">Il tuo nickname <span>*</span></label><input id="nickname" name="nickname" type="text" placeholder="es. marta_rossi" required autocomplete="nickname"><p class="field-hint">Puoi cambiarlo quando vuoi.</p></fieldset>
           <fieldset data-step="2" hidden><label for="age">Quanti anni hai? <span>*</span></label><input id="age" name="age" type="number" min="18" max="99" placeholder="18+" required><label for="city">In quale zona vuoi incontrare il caso? <span>*</span></label><input id="city" name="city" type="text" placeholder="Città o quartiere" required></fieldset>
-          <fieldset data-step="3" hidden><label for="looking">Cosa vuoi trovare? <span>*</span></label><select id="looking" name="looking" required><option value="">Scegli quello che senti</option><option>Una nuova connessione</option><option>Un appuntamento</option><option>Nuove amicizie</option><option>Non lo so ancora</option></select><label for="interests">Tre cose che ti accendono</label><input id="interests" name="interests" type="text" placeholder="es. cinema, bici, ramen"></fieldset>
-          <fieldset data-step="4" hidden><label for="email">Dove possiamo scriverti? <span>*</span></label><input id="email" name="email" type="email" placeholder="la-tua@email.com" required autocomplete="email"><label class="consent"><input type="checkbox" id="consent" required><span class="checkmark"></span><span>Ho almeno 18 anni e accetto la privacy notice della demo. <b>*</b></span></label></fieldset>
+          <fieldset data-step="3" hidden><label for="looking">Cosa vuoi trovare? <span>*</span></label><select id="looking" name="looking" required><option value="">Scegli quello che senti</option><option>Una nuova connessione</option><option>Un appuntamento</option><option>Nuove amicizie</option><option>Non lo so ancora</option></select><label for="interests">Tre cose che ti accendono</label><input id="interests" name="interests" type="text" placeholder="es. cinema, bici, ramen"><p class="field-hint">Useremo l’email del tuo accesso per aggiornarti su DESTINY.</p></fieldset>
           <p id="onboarding-status" class="form-status" role="status" aria-live="polite"></p>
           <button class="button button-primary" type="submit"><span id="form-action">Continua</span> <span>↗</span></button>
         </form>

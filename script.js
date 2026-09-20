@@ -26,7 +26,6 @@ const stepCopy = [
   ["Partiamo<br>dal tuo <strong>nome.</strong>", "Scegli come vuoi essere chiamato. Non serve il tuo nome vero."],
   ["Ora dimmi<br>dove <strong>sei.</strong>", "Ci serve solo una zona, mai la tua posizione precisa."],
   ["Cosa ti<br>muove <strong>dentro?</strong>", "Questi dettagli aiutano il motore a sorprenderti meglio."],
-  ["Un ultimo<br><strong>dettaglio.</strong>", "Ti scriveremo solo quando ci sarà qualcosa di interessante."]
 ];
 
 function publicSections(hidden) {
@@ -61,7 +60,7 @@ function showStep(step) {
   document.querySelector("#onboarding-title").innerHTML = stepCopy[step - 1][0];
   document.querySelector("#onboarding-help").textContent = stepCopy[step - 1][1];
   document.querySelector("#step-number").textContent = String(step).padStart(2, "0");
-  document.querySelector("#form-action").textContent = step === 4 ? "Crea il mio spazio" : "Continua";
+  document.querySelector("#form-action").textContent = step === 3 ? "Crea il mio spazio" : "Continua";
   status.textContent = "";
 }
 
@@ -119,18 +118,13 @@ function validateCurrentStep() {
     status.className = "form-status error";
     return false;
   }
-  if (currentStep === 4 && !document.querySelector("#email").validity.valid) {
-    status.textContent = "Inserisci un indirizzo email valido.";
-    status.className = "form-status error";
-    return false;
-  }
   return true;
 }
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!validateCurrentStep()) return;
-  if (currentStep < 4) {
+  if (currentStep < 3) {
     showStep(currentStep + 1);
     return;
   }
