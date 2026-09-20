@@ -12,6 +12,10 @@ const form = document.querySelector("#profile-form");
 const status = document.querySelector("#onboarding-status");
 let authMode = "login";
 let currentStep = 1;
+const appViews = ["home", "discover", "messages", "profile"];
+let activeView = "home";
+let touchStartX = 0;
+let touchStartY = 0;
 
 const stepCopy = [
   ["Partiamo<br>dal tuo <strong>nome.</strong>", "Scegli come vuoi essere chiamato. Non serve il tuo nome vero."],
@@ -141,20 +145,56 @@ function openApp() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function showView(view, direction = "next") {
+  if (!appViews.includes(view) || view === activeView) return;
+  const shell = document.querySelector(".app-shell");
+  shell.classList.remove("view-slide-next", "view-slide-prev");
+  void shell.offsetWidth;
+  shell.classList.add(direction === "prev" ? "view-slide-prev" : "view-slide-next");
+  activeView = view;
+  document.querySelectorAll(".app-tabs button").forEach((item) => item.classList.toggle("active", item.dataset.view === view));
+  document.querySelectorAll(".app-view").forEach((panel) => { panel.hidden = panel.dataset.panel !== view; });
+}
+
 document.querySelectorAll(".app-tabs button, [data-jump]").forEach((tab) => {
   tab.addEventListener("click", () => {
     const view = tab.dataset.view || tab.dataset.jump;
-    document.querySelectorAll(".app-tabs button").forEach((item) => item.classList.toggle("active", item.dataset.view === view));
-    document.querySelectorAll(".app-view").forEach((panel) => { panel.hidden = panel.dataset.panel !== view; });
+    const direction = appViews.indexOf(view) > appViews.indexOf(activeView) ? "next" : "prev";
+    showView(view, direction);
   });
 });
 
+appShell.addEventListener("touchstart", (event) => {
+  touchStartX = event.changedTouches[0].screenX;
+  touchStartY = event.changedTouches[0].screenY;
+}, { passive: true });
+
+appShell.addEventListener("touchend", (event) => {
+  const deltaX = event.changedTouches[0].screenX - touchStartX;
+  const deltaY = event.changedTouches[0].screenY - touchStartY;
+  if (Math.abs(deltaX) < 55 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+  const currentIndex = appViews.indexOf(activeView);
+  const nextIndex = deltaX < 0 ? Math.min(currentIndex + 1, appViews.length - 1) : Math.max(currentIndex - 1, 0);
+  if (nextIndex !== currentIndex) showView(appViews[nextIndex], deltaX < 0 ? "next" : "prev");
+}, { passive: true });
+
 const candidates = [["Luca, 28", "ha salvato gli stessi concerti e vive a 12 minuti da te."], ["Sofia, 25", "cerca qualcuno con cui perdersi in una libreria."], ["Marco, 30", "ha scritto: il miglior piano è quello che cambia."]];
 document.querySelector("#generate-match").addEventListener("click", () => {
+  const button = document.querySelector("#generate-match");
+  button.disabled = true;
+  button.classList.add("is-searching");
+  button.innerHTML = '<span class="search-spinner" aria-hidden="true"></span> Sto cercando...';
+  document.querySelector("#match-result").hidden = true;
   const candidate = candidates[Math.floor(Math.random() * candidates.length)];
   const result = document.querySelector("#match-result");
-  result.innerHTML = `<b>${candidate[0]} <span>✦ scelto dal destino</span></b><span>${candidate[1]}</span>`;
-  result.hidden = false;
+  window.setTimeout(() => {
+    result.innerHTML = `<b>${candidate[0]} <span>✦ scelto dal destino</span></b><span>${candidate[1]}</span>`;
+    result.hidden = false;
+    button.disabled = false;
+    button.classList.remove("is-searching");
+    button.innerHTML = "Genera la mia sorpresa <span>✦</span>";
+    result.classList.add("match-pop");
+  }, 1500);
 });
 
 menuToggle?.addEventListener("click", () => {
