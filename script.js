@@ -225,7 +225,7 @@ document.querySelector("#generate-match").addEventListener("click", () => {
     result.hidden = false;
     button.disabled = false;
     button.classList.remove("is-searching");
-    button.innerHTML = "Incontro in corso <span>⌁</span>";
+    button.innerHTML = "Incontro trovato <span>✓</span>";
     button.classList.add("match-locked");
     result.classList.add("match-pop");
     document.querySelector("#message-list").innerHTML = `<button class="message-thread" type="button"><span class="thread-avatar"></span><span><b>${candidate[0]}</b><small>La tua nuova connessione è qui ✦</small></span><strong>1</strong></button>`;
